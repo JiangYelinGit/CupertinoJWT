@@ -30,12 +30,12 @@ public struct JWT: Codable {
         public let issueDate: Int
 
         /// exp
-        public let expireDate: Int
+        //public let expireDate: Int
 
         enum CodingKeys: String, CodingKey {
             case teamID = "iss"
             case issueDate = "iat"
-            case expireDate = "exp"
+            //case expireDate = "exp"
         }
     }
 
@@ -50,7 +50,7 @@ public struct JWT: Codable {
         let iat = Int(issueDate.timeIntervalSince1970.rounded())
         let exp = iat + Int(expireDuration)
 
-        payload = Payload(teamID: teamID, issueDate: iat, expireDate: exp)
+        payload = Payload(teamID: teamID, issueDate: iat)
     }
 
     /// Combine header and payload as digest for signing.
